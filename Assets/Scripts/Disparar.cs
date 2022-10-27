@@ -15,7 +15,7 @@ public class Disparar : MonoBehaviour
         //Input.GetButtonDown
         if (Input.GetKeyDown("space"))
         {
-
+            FindObjectOfType<Sonidos>().PlayDisparo();
             //1-Instancia la BalaPrefab y le asigna Personaje como padre.
             GameObject BalaTemporal = Instantiate(BalaPrefab, gameObject.GetComponent<PersonajeController>().transform);
 

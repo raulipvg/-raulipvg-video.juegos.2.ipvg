@@ -10,7 +10,7 @@ public class TriggerMuro : MonoBehaviour
         
         if (colision.gameObject.CompareTag("Bala"))     // Identifica mediante la etiqueta si al colisión fue por una bala
         {
-            Debug.Log("Muro");
+            //Debug.Log("Muro");
             Destroy(colision.gameObject);               // Destruye la bala
         }
         else

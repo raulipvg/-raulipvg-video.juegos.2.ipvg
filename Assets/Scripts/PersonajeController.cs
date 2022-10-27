@@ -41,8 +41,9 @@ public class PersonajeController : MonoBehaviour
     {
         // ATAQUE DEL ENEMIGO MEDIANTE UN TOQUE
         if (other.gameObject.CompareTag("Enemigo"))     // Identifica mediante la etiqueta si la colisión fue por una bala
-        {     
+        {
             FindObjectOfType<GameController>().Toque();
+            
         }
        
     }

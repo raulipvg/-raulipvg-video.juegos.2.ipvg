@@ -36,7 +36,7 @@ public class EnemigoController : MonoBehaviour
             vidaEnemigo--;
             if (vidaEnemigo <= 0)                                      //Utiliza <= ya que puede recibir dos balas contínuas que no alcance a calcular, lo que podría dar un falso negativo a ==0
             {
-                //FindObjectOfType>().Destruye();  //Llama la función de GameController para aumentar el contador de enemigos destruídos
+                FindObjectOfType<GameController>().DestruyeEnemigo();  //Llama la función de GameController para aumentar el contador de enemigos destruídos
                 Destroy(gameObject);                            //Destruye al enemigo que fue colisionado por la bala
                 //FindObjectOfType<GameController>().Fin();
             }

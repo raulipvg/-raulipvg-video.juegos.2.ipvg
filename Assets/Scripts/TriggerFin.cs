@@ -10,6 +10,8 @@ public class TriggerFin : MonoBehaviour
         if (other.gameObject.CompareTag("Personaje"))     // Identifica mediante la etiqueta si la colisión fue por una bala
         {
             Debug.Log("Personaje llego a la meta");
+
+            FindObjectOfType<GameController>().Fin(3);            
         }
     }
 }
