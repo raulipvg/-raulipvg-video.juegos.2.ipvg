@@ -54,4 +54,9 @@ public class GameController : MonoBehaviour
         }
 
     }
+
+    public void SalirDelJuego()
+    {
+        Application.Quit();
+    }
 }
