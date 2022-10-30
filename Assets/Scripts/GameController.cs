@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public TMP_Text Tiempo;
     [SerializeField] public TMP_Text Toques;
     [SerializeField] public TMP_Text Enemigos;
+    public TMP_Text nombreUsuario;
 
 
     private static int vidasEnemigos;
@@ -30,6 +31,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dificultad = Configuraciones.dificultad;
         tiempoInicial = time;
         //SETEO EN 0 LAS VARIABLES
         PlayerPrefs.SetInt("tiempo", 0);
@@ -66,17 +68,19 @@ public class GameController : MonoBehaviour
         if (i == 1) // PERDIO POR TOQUES
         {
             FindObjectOfType<Sonidos>().PlayFinPerder();
-            Debug.Log("Juego Terminado, Te tocaron 3 veces =(");
+            Debug.Log("Juego Terminado "+ Configuraciones.nombreUsuario +", Te tocaron 3 veces =(");
             StopAllCoroutines();
             Time.timeScale = 0; //Juego Pausado
             gameObjectActivar.SetActive(true);
+            //AudioController.Pausar();
+            esperaSegundos(5);
             SceneManager.LoadScene("Escena 0");
 
         }
         else if(i == 2) // PERDIO POR TIMEOUT
         {
             FindObjectOfType<Sonidos>().PlayFinPerder();
-            Debug.Log("Juego Terminado, Se te fue el tiempo");
+            Debug.Log("Juego Terminado " + Configuraciones.nombreUsuario + ", Se te fue el tiempo");
             StopAllCoroutines();
             Time.timeScale = 0; //Juego Pausado
             GameOver.SetActive(true);
@@ -88,9 +92,10 @@ public class GameController : MonoBehaviour
         {
             
             FindObjectOfType<Sonidos>().PlayFinGanar();
-            Debug.Log("Juego Terminado, FELICIDADES!!");
+            Debug.Log("Juego Terminado " + Configuraciones.nombreUsuario + ", FELICIDADES!!");
             StopAllCoroutines();
 
+            nombreUsuario.text = Configuraciones.nombreUsuario;
            Toques.text = Convert.ToString(PlayerPrefs.GetInt("toques"));
            Tiempo.text = Convert.ToString(PlayerPrefs.GetInt("tiempo") + " segundos");
            Enemigos.text = Convert.ToString(PlayerPrefs.GetInt("enemigosDestruidos"));
@@ -126,6 +131,11 @@ public class GameController : MonoBehaviour
     {
         enemigosDestruidos++;
         PlayerPrefs.SetInt("enemigosDestruidos", enemigosDestruidos);
+    }
+
+    private IEnumerable esperaSegundos(int seg)
+    {
+        yield return new WaitForSeconds(seg);
     }
    
 }

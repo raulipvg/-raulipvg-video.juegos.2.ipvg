@@ -15,7 +15,7 @@ public class EnemigoController : MonoBehaviour
     {
         vidaEnemigo = GameController.getVidaEnemigos();
         agente = GetComponent<NavMeshAgent>();
-
+        agente.speed = agente.speed * Mathf.Pow(10,(Configuraciones.dificultad));
     }
 
      void FixedUpdate()
