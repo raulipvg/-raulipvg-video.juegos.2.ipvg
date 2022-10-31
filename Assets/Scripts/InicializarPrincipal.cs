@@ -9,7 +9,6 @@ public class InicializarPrincipal : MonoBehaviour
     public TextMeshProUGUI textoBienvenido;
     void Awake()
     {
-        Debug.Log(Configuraciones.nombreUsuario);
         actualizarNombre();
     }
 

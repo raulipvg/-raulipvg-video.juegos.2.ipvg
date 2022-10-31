@@ -10,7 +10,7 @@ public class Configuraciones : MonoBehaviour
     [SerializeField]  public TMP_InputField input_nombreUsuario;
     [SerializeField]  public static int dificultad = 0;
     [SerializeField]  public static bool nombreIngresado = false;
-    Configuraciones conf;
+    public static Configuraciones conf;
 
     void Awake()
     {
