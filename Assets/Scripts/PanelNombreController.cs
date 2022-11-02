@@ -10,7 +10,14 @@ public class PanelNombreController : MonoBehaviour
     public Button continuar;
     public GameObject panelMenu;
 
-   
+    private void Start()
+    {
+        if (Configuraciones.nombreIngresado)
+        {
+            gameObject.SetActive(false);
+            panelMenu.SetActive(true);
+        }
+    }
 
     public void verificaNoVacio()
     {
