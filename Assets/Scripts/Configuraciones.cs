@@ -10,7 +10,7 @@ public class Configuraciones : MonoBehaviour
     [SerializeField]  public TMP_InputField input_nombreUsuario;
     [SerializeField]  public static int dificultad = 0;
     [SerializeField]  public static bool nombreIngresado = false;
-    public static Configuraciones conf;
+    public  Configuraciones conf;
 
     void Awake()
     {
@@ -24,7 +24,6 @@ public class Configuraciones : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 
     public static void setNombreUsuario(string usuario)
     {

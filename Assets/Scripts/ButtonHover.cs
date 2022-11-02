@@ -9,6 +9,7 @@ public class ButtonHover : MonoBehaviour
     public void changeWhenHover()
     {
         SoundsController.Play();
+        //Debug.Log("Boton Volver");
     }
 
 }

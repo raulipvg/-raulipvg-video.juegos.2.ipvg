@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,13 +10,24 @@ public class EnemigoController : MonoBehaviour
     [SerializeField]
     public Transform objetivo;
     public NavMeshAgent agente;
-    static int vidaEnemigo;
+    public int vidaEnemigo;
     // Start is called before the first frame update
     void Start()
     {
         vidaEnemigo = GameController.getVidaEnemigos();
         agente = GetComponent<NavMeshAgent>();
-        agente.speed = agente.speed * Mathf.Pow(10,(Configuraciones.dificultad));
+        if(Configuraciones.dificultad == 0)
+        {
+            agente.speed = agente.speed;
+        }else if (Configuraciones.dificultad == 1)
+        {
+            agente.speed = (float)Convert.ToDouble(agente.speed * 1.5); 
+        }
+        else
+        {
+            agente.speed = (float)Convert.ToDouble(agente.speed * 2);
+        }
+        float a = agente.speed; 
     }
 
      void FixedUpdate()
@@ -33,7 +45,7 @@ public class EnemigoController : MonoBehaviour
         // Debug.Log("Choque con otro trigger");
         if (other.gameObject.CompareTag("Bala"))     // Identifica mediante la etiqueta si la colisión fue por una bala
         {
-            vidaEnemigo--;
+                 vidaEnemigo--;
             if (vidaEnemigo <= 0)                                      //Utiliza <= ya que puede recibir dos balas contínuas que no alcance a calcular, lo que podría dar un falso negativo a ==0
             {
                 FindObjectOfType<GameController>().DestruyeEnemigo();  //Llama la función de GameController para aumentar el contador de enemigos destruídos

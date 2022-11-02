@@ -22,7 +22,7 @@ public class SoundsController : MonoBehaviour
 
     public static void ControlVolumen(float volumen)
     {
-        inst._audioSource.volume = volumen / 100;
+        inst._audioSource.volume = volumen;
     }
 
     public static void Play()

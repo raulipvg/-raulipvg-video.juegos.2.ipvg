@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Sonidos : MonoBehaviour
@@ -9,6 +10,14 @@ public class Sonidos : MonoBehaviour
     public AudioSource _finGanar;
     public AudioSource _finPerder;
 
+     void Start()
+    {
+        _disparo.volume = PlayerPrefs.GetFloat("VolumenJuego");
+        _colision.volume = PlayerPrefs.GetFloat("VolumenJuego");
+        _finGanar.volume = PlayerPrefs.GetFloat("VolumenJuego");
+        _finPerder.volume = PlayerPrefs.GetFloat("VolumenJuego");
+
+    }
     public void PlayDisparo()
     {
         _disparo.Play();       
@@ -25,4 +34,5 @@ public class Sonidos : MonoBehaviour
     {
         _finPerder.Play();
     }
+
 }

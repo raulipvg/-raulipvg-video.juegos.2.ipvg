@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
         Debug.Log("Game Controller Activado");
         Time.timeScale = 1;  //Juego Iniciado
         StartCoroutine(timer());
-        vidasEnemigos = dificultad;
+        vidasEnemigos = dificultad+1;
     }
 
     IEnumerator timer()

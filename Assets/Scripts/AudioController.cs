@@ -6,6 +6,7 @@ public class AudioController : MonoBehaviour
 {
     public static AudioController inst;
     AudioSource _audioSource;
+
     void Awake()
     {
         if (inst == null)
@@ -22,7 +23,7 @@ public class AudioController : MonoBehaviour
 
     public static void ControlVolumen(float volumen)
     {
-        inst._audioSource.volume = volumen / 100;
+        inst._audioSource.volume = volumen;
     }
 
     public static void Pausar()
